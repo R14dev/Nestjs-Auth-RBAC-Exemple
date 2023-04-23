@@ -16,7 +16,7 @@ export class RoleController {
     return this.roleservice.getAll();
   }
   @Post('/add')
-  @Permission(PERMISSIONS.ADICIONAR, PERMISSIONS.ALL)
+  @Permission(PERMISSIONS.ADICIONAR, PERMISSIONS.REMOVE) // decoretor
   add(@Body() data: any) {
     return this.roleservice.add(data);
   }
