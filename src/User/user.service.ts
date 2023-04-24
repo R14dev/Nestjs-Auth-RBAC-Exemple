@@ -19,7 +19,7 @@ export class UserService {
         roleId: User.roleId,
       };
       const Users = await this.find(User.nome);
-      if (Users) throw new UnauthorizedException();
+      if (Users) throw new BadRequestException();
       return await this.prismaService.user.create({
         data: {
           nome: data.nome,
@@ -28,7 +28,7 @@ export class UserService {
         },
       });
     } catch (error) {
-      throw new UnauthorizedException();
+      throw new BadRequestException();
     }
   }
 

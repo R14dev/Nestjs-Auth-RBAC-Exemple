@@ -89,9 +89,14 @@ export class AuthGuard implements CanActivate {
     }
   }
   private compare(a: PERMISSIONS[], b: PERMISSIONS[]): boolean {
-    if (JSON.stringify(a) === JSON.stringify(b)) {
+    const findAllPermissions = b.includes(PERMISSIONS.ALL);
+    if (findAllPermissions) {
       return true;
+    } else {
+      if (JSON.stringify(a) === JSON.stringify(b)) {
+        return true;
+      }
+      return false;
     }
-    return false;
   }
 }

@@ -14,7 +14,6 @@ export class PermissionService {
       };
       return await this.prisma.permissao.create({ data });
     } catch (error) {
-      console.log(error);
       throw new BadRequestException();
     }
   }

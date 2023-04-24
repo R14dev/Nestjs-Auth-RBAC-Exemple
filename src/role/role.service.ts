@@ -1,4 +1,4 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/service/prisma.service';
 import { RoleDTO } from './role.dto';
 import { UserService } from 'src/User/user.service';
@@ -18,14 +18,14 @@ export class RoleService {
         data,
       });
     } catch (error) {
-      throw new ForbiddenException();
+      throw new BadRequestException();
     }
   }
   async getAll(): Promise<RoleDTO[]> {
     try {
       return await this.prisma.role.findMany();
     } catch (error) {
-      throw new ForbiddenException();
+      throw new BadRequestException();
     }
   }
   async add(role: Record<any, any>): Promise<any> {
@@ -43,7 +43,7 @@ export class RoleService {
         },
       });
     } catch (error) {
-      throw new ForbiddenException();
+      throw new BadRequestException();
     }
   }
 }
